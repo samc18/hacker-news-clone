@@ -1,0 +1,14 @@
+@import 'config';
+
+body {
+    font-family: $fontPrimary;
+}
+
+.header {
+    background-color: $clrAccent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: 0.2em 0;
+}
