@@ -6,9 +6,8 @@ async function Stories(path) {
     const storiesIds = await getStoriesIds(path)
     const top10Stories = storiesIds.slice(0, 9)
     const stories = await Promise.all(top10Stories.map(async id => {
-        return (await fetch(`${baseUrl}/item/${id}.json`)).json()
+        return getStory(id)
     }))
-    console.log(stories)
     view.innerHTML = `${stories.map((story, index) => Story({...story, index})).join('')}`
 }
 
@@ -23,8 +22,8 @@ async function getStoriesIds(path) {
     return storiesIds
 }
 
-async function getStory(item) {
-    const response = await fetch(`${baseUrl}/item/${item}.json`)
+async function getStory(id) {
+    const response = await fetch(`${baseUrl}/item/${id}.json`)
     const story = await response.json()
     return story
 }
