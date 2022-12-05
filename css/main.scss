@@ -4,11 +4,50 @@ body {
     font-family: $fontPrimary;
 }
 
+.app-header {
+    @include grid;
+}
+
 .header {
-    background-color: $clrAccent;
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 1em;
-    padding: 0.2em 0;
+    grid-column: 2 / -2;
+    background-color: $clrAccent;
+}
+
+.router-outlet {
+    @include grid;
+}
+
+.story {
+    grid-column: 2 / -2;
+    background-color: $clrBg;
+    color: $clrTxt;
+    padding: 0.5em 0.2em;
+
+    &__title,
+    &__comments {
+        text-decoration: none;
+        color: #000;
+    }
+
+    &__line:nth-child(2) {
+        padding-top: 0.1em;
+        font-size: 0.8rem;
+    }
+
+    &__favorite {
+        display: inline-block;
+        background-color: transparent;
+        border: none;
+        font-size: inherit;
+        cursor: pointer;
+    }
+
+    &__comments:hover,
+    &__comments:focus,
+    &__favorite:hover,
+    &__favorite:focus {
+        text-decoration: underline;
+    }
 }

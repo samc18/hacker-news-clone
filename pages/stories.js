@@ -9,11 +9,7 @@ async function Stories(path) {
         return (await fetch(`${baseUrl}/item/${id}.json`)).json()
     }))
     console.log(stories)
-    view.innerHTML = `
-        <div>
-            ${stories.map(story => Story(story))}
-        </div>
-    `
+    view.innerHTML = `${stories.map((story, index) => Story({...story, index})).join('')}`
 }
 
 async function getStoriesIds(path) {

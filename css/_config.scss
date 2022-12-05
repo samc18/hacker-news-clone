@@ -19,3 +19,10 @@ input, button, textarea, select {
 
 $fontPrimary: Verdana, Geneva, sans-serif; 
 $clrAccent: rgb(255, 102, 0);
+$clrTxt: #828282;
+$clrBg: rgb(246, 246, 239);
+
+@mixin grid {
+    display: grid;
+    grid-template-columns: 1em 1fr 1em;
+}
