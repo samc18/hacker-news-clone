@@ -22,13 +22,13 @@ body {
 .story {
     grid-column: 2 / -2;
     background-color: $clrBg;
-    color: $clrTxt;
+    color: $clrTxtSecondary;
     padding: 0.5em 0.2em;
 
     &__title,
     &__comments {
         text-decoration: none;
-        color: #000;
+        color: $clrTxtPrimary;
     }
 
     &__line:nth-child(2) {
