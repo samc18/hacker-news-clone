@@ -6,17 +6,45 @@ body {
 
 .app-header {
     @include grid;
+    margin-top: 1em;
 }
 
 .header {
     display: flex;
+    align-items: center;
     gap: 1em;
     grid-column: 2 / -2;
+    padding: 0.3em 0.2em;
     background-color: $clrAccent;
+
+    & > div {
+        display: flex;
+        align-items: center;
+        gap: 0.8em;
+    }
+
+    &__title {
+        font-weight: bold;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: white;
+    }
+
+    &__link:hover,
+    &__link:focus {
+        text-decoration: underline;
+    }
+}
+
+.fa-y-combinator {
+    font-size: 1.5rem;
 }
 
 .router-outlet {
     @include grid;
+    margin-bottom: 1em;
 }
 
 .story {

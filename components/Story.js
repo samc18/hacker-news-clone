@@ -1,13 +1,13 @@
 function Story(story) {
     const { title, url, score, by, time, kids, index } = story
-    const domain =  url.match(/https:\/\/[a-z 0-9 .]*\//gi)[0]
+    const domain = url && url.match(/https:\/\/[a-z 0-9 .]*\//gi)[0]
     return `
         <div class="story">
             <div class="story__line">
                 <span class="story__index">${index + 1}</span>
                 <span class"story__upvote">▲</span>
                 <a href=${url} class="story__title">${title}</a>
-                <span class="story__domain">(${domain.slice(8, domain.length - 1)})</span>
+                <span class="story__domain">(${url && domain.slice(8, domain.length - 1)})</span>
             </div>
             <div class="story__line">
                 <span class="story__info">${score} points by ${by} ${new Date(time).getHours()} hours ago</span> 
