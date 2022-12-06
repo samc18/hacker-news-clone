@@ -84,4 +84,12 @@ body {
 }
 .story__comments:hover, .story__comments:focus, .story__favorite:hover, .story__favorite:focus {
   text-decoration: underline;
+}
+
+.favorites-msg {
+  grid-column: 2/-2;
+  text-align: center;
+  color: #828282;
+  background-color: rgb(246, 246, 239);
+  padding: 0.8em 0;
 }/*# sourceMappingURL=main.css.map */

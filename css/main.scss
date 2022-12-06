@@ -79,3 +79,11 @@ body {
         text-decoration: underline;
     }
 }
+
+.favorites-msg {
+    grid-column: 2 / -2;
+    text-align: center;
+    color: $clrTxtSecondary;
+    background-color: $clrBg;
+    padding: 0.8em 0;
+}

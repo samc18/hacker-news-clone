@@ -10,6 +10,7 @@ async function Stories(path) {
     const stories = await Promise.all(top10Stories.map(async id => {
         return getStory(id)
     }))
+    
     view.innerHTML = `${stories.map((story, index) => Story({...story, index})).join('')}`
 
     handleEvents()
@@ -37,7 +38,6 @@ function handleEvents() {
             const story = JSON.parse(this.dataset.story)
             const isFavorited = checkFavorite(store.getState().favorites, story)
             store.dispatch({type: isFavorited ? 'REMOVE_FAVORITE' : 'ADD_FAVORITE', payload: {favorite: story}})
-            console.log(store.getState().favorites)
         })
     })
 }
