@@ -1,15 +1,15 @@
 function Comment(comment) {
     const { by, time, text } = comment
-    console.log(comment)
-
+    const hasNestedComments = comment.comments
     return `
         <div class="comment">
             <p class="comment__header">
-                ${by} | ${new Date(time).getHours()}
+                ${by} | ${new Date(time).getHours()} hours ago
             </p>
-            <p class="comment__content">
+            <div class="comment__content">
                 ${text}
-            </p>
+                ${hasNestedComments && comment.comments.map(comment => Comment(comment)).join('')}
+            </div>
         </div>
     `
 }

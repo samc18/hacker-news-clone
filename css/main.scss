@@ -91,4 +91,30 @@ body {
 .comment {
     grid-column: 2 / -2;
     background-color: $clrBg;
+
+    &__header {
+        color: $clrTxtSecondary;
+        font-size: 0.8rem;
+        margin-left: 1em;
+    }
+
+    &__content {
+        margin-left: 2em;
+    }
+
+    &__msg {
+        color: $clrTxtSecondary;
+        background-color: $clrBg;
+        text-align: center;
+        padding: 0.8em 0;
+        grid-column: 2 / -2;
+    }
+}
+
+.error {
+    color: $clrTxtSecondary;
+    background-color: $clrBg;
+    text-align: center;
+    padding: 0.8em 0;
+    grid-column: 2 / -2;
 }

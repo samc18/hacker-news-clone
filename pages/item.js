@@ -4,27 +4,49 @@ import Comment from "../components/Comment.js"
 import Story from "../components/Story.js"
 
 async function Item() {
-    const story = await getStory()
-    const storyKidsIds = await getStoryKidsIds()
-    const kids = await Promise.all(storyKidsIds.map(async id => {
-        return getKid(id)
-    }))
-    view.innerHTML = `
-        ${Story(story)}
-        ${kids.map(kid => Comment(kid)).join('')}
-    ` 
-    console.log(kids)
+    let story = null
+    let hasComments = false
+    let hasError = false
+
+    try {
+        story = await getStory()
+        hasComments = story.kids
+    } catch (error) {
+        hasError = true
+        console.error(error)
+    }
+
+    if (hasError) {
+        view.innerHTML = `<div class="error">Error fetching story</div>`
+    }
+
+    if (hasComments) {
+        const storyKidsIds = story.kids
+        const kids = await Promise.all(storyKidsIds.map(async id => {
+            return getKid(id)
+        }))
+        view.innerHTML = `
+            ${Story(story)}
+            ${kids.map(kid => Comment(kid)).join('')}` 
+    } else {
+        view.innerHTML = `
+            ${Story(story)}
+            <div class="comment__msg">No comments</div>`
+    }
 }
 
 async function getKid(id) {
     const response = await fetch(`${baseUrl}/item/${id}.json`)
     const kid = await response.json()
-    return kid
-}
-
-async function getStoryKidsIds() {
-    const story = await getStory()
-    return story.kids
+    const hasNestedComments = kid.kids && kid.kids.length > 0
+    if (hasNestedComments) {
+        kid.kids = await Promise.all(kid.kids.map(async id => {
+            return getKid(id)
+        }))
+        return {...kid, comments: kid.kids}
+    } else {
+        return kid
+    }
 }
 
 async function getStory() {

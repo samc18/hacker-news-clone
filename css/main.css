@@ -97,4 +97,27 @@ body {
 .comment {
   grid-column: 2/-2;
   background-color: rgb(246, 246, 239);
+}
+.comment__header {
+  color: #828282;
+  font-size: 0.8rem;
+  margin-left: 1em;
+}
+.comment__content {
+  margin-left: 2em;
+}
+.comment__msg {
+  color: #828282;
+  background-color: rgb(246, 246, 239);
+  text-align: center;
+  padding: 0.8em 0;
+  grid-column: 2/-2;
+}
+
+.error {
+  color: #828282;
+  background-color: rgb(246, 246, 239);
+  text-align: center;
+  padding: 0.8em 0;
+  grid-column: 2/-2;
 }/*# sourceMappingURL=main.css.map */
