@@ -1,5 +1,5 @@
 function Story(story) {
-    const { title, id, url, score, by, time, kids, index, isFavorite } = story
+    const { title, id, url, score, by, time, descendants, index, isFavorite } = story
     const domain = url && url.match(/https{0,1}:\/\/[a-z 0-9 .-]*\/{0,1}/gi)[0]
     return `
         <div class="story">
@@ -11,7 +11,7 @@ function Story(story) {
             </div>
             <div class="story__line">
                 <span class="story__info">${score} points by ${by} ${new Date(time).getHours()} hours ago</span> 
-                | <a href="#/item?id=${id}" class="story__comments">${kids ? kids.length : 0} comments</a>
+                | <a href="#/item?id=${id}" class="story__comments">${descendants ? descendants : 0} comments</a>
                 | <button class="story__favorite" data-story='${JSON.stringify(story)}'>
                     ${isFavorite ? 'Remove favorite' : 'Add to favorites'}
                 </button>
