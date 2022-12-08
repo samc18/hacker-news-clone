@@ -2,6 +2,8 @@ import view from "../utils/view.js"
 import baseUrl from "../utils/baseUrl.js"
 import Comment from "../components/Comment.js"
 import Story from "../components/Story.js"
+import checkFavorite from "../utils/checkFavorite.js"
+import store from "../store.js"
 
 async function Item() {
     let story = null
@@ -33,6 +35,8 @@ async function Item() {
             ${Story(story)}
             <div class="comment__msg">No comments</div>`
     }
+
+    handleEvents()
 }
 
 async function getKid(id) {
@@ -54,6 +58,16 @@ async function getStory() {
     const response = await fetch(`${baseUrl}/item/${storyId}.json`)
     const story = await response.json()
     return story
+}
+
+function handleEvents() {
+    document.querySelectorAll('.story__favorite').forEach(favoriteButton => {
+        favoriteButton.addEventListener('click', function() {
+            const story = JSON.parse(this.dataset.story)
+            const isFavorited = checkFavorite(store.getState().favorites, story)
+            store.dispatch({type: isFavorited ? 'REMOVE_FAVORITE' : 'ADD_FAVORITE', payload: {favorite: story}})
+        })
+    })
 }
 
 export default Item

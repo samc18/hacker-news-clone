@@ -7,7 +7,6 @@ function setActiveLink() {
     links.forEach(link => {
         const linkPath = link.getAttribute('href')
         const currentPath = window.location.hash
-        console.log(currentPath)
         if (linkPath === currentPath) {
             link.classList.add('active')
         } else {
