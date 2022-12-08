@@ -92,4 +92,9 @@ body {
   color: #828282;
   background-color: rgb(246, 246, 239);
   padding: 0.8em 0;
+}
+
+.comment {
+  grid-column: 2/-2;
+  background-color: rgb(246, 246, 239);
 }/*# sourceMappingURL=main.css.map */

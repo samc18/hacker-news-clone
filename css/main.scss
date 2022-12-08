@@ -87,3 +87,8 @@ body {
     background-color: $clrBg;
     padding: 0.8em 0;
 }
+
+.comment {
+    grid-column: 2 / -2;
+    background-color: $clrBg;
+}
