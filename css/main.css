@@ -51,6 +51,10 @@ body {
   text-decoration: underline;
 }
 
+.active {
+  text-decoration: underline;
+}
+
 .fa-y-combinator {
   font-size: 1.5rem;
 }
